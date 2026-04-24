@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshops | ArtesHumanis</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1410;--cream:#faf7f2;--warm:#f2ede4;--gold:#c9a96e;--gold-light:#e8d5b0;--deep:#2d2420;--mid:#5a4a3a;--border:rgba(201,169,110,0.25);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);font-weight:300;line-height:1.7;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(250,247,242,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:padding 0.3s;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;letter-spacing:0.08em;color:var(--ink);}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{font-size:0.76rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.55rem 1.3rem!important;}
+.nav-cta:hover{background:var(--gold)!important;color:var(--ink)!important;}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;}
+.hamburger span{width:24px;height:2px;background:var(--ink);display:block;}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--cream);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding-top:5rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-size:1.2rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);}
+section{padding:7rem 4rem;}
+.section-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;}
+.section-eyebrow::before{content:'';width:2rem;height:1px;background:var(--gold);}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:300;}
+h1{font-size:clamp(3rem,5vw,5rem);line-height:1.05;}
+h2{font-size:clamp(2rem,3.5vw,3rem);line-height:1.15;}
+em{font-style:italic;color:var(--gold);}
+.btn-primary{background:var(--gold);color:var(--ink);padding:1rem 2.5rem;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;display:inline-block;transition:background 0.2s,transform 0.2s;}
+.btn-primary:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px);}
+.btn-outline{border:1px solid var(--ink);color:var(--ink);padding:1rem 2.5rem;font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;display:inline-block;transition:all 0.2s;background:transparent;}
+.btn-outline:hover{background:var(--ink);color:var(--cream);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{animation:fadeUp 0.8s ease forwards;}.delay-1{animation-delay:0.15s;opacity:0;}.delay-2{animation-delay:0.3s;opacity:0;}
+
+/* HERO */
+.hero{min-height:70vh;display:grid;grid-template-columns:1fr 1fr;padding-top:80px;overflow:hidden;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;background:var(--warm);}
+.hero-right{position:relative;overflow:hidden;}
+.hero-img{width:100%;height:100%;object-fit:cover;filter:sepia(8%);}
+
+/* WHY WORKSHOPS */
+.why-section{background:var(--ink);padding:5rem 4rem;}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,169,110,0.15);}
+.why-card{background:var(--ink);padding:2.5rem 2rem;}
+.why-icon{font-size:2rem;margin-bottom:1.2rem;}
+.why-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold-light);margin-bottom:0.7rem;}
+.why-card p{font-size:0.85rem;color:rgba(250,247,242,0.6);line-height:1.8;}
+
+/* WORKSHOP CARDS */
+.workshops-section{background:var(--cream);}
+.workshops-header{max-width:700px;margin:0 auto 4rem;text-align:center;}
+.workshops-header p{color:var(--mid);margin-top:1rem;font-size:0.97rem;}
+.workshop-list{display:grid;gap:2rem;}
+
+.workshop-card{display:grid;grid-template-columns:280px 1fr auto;gap:0;background:white;border:1px solid var(--border);overflow:hidden;transition:box-shadow 0.3s,transform 0.3s;}
+.workshop-card:hover{box-shadow:0 20px 50px rgba(0,0,0,0.09);transform:translateY(-3px);}
+.workshop-card-img{overflow:hidden;}
+.workshop-card-img img{width:100%;height:100%;object-fit:cover;filter:sepia(10%);transition:transform 0.4s;}
+.workshop-card:hover .workshop-card-img img{transform:scale(1.04);}
+.workshop-card-body{padding:2.5rem;}
+.workshop-type{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;font-weight:500;}
+.workshop-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--ink);margin-bottom:0.8rem;line-height:1.2;}
+.workshop-card-body p{font-size:0.88rem;color:var(--mid);line-height:1.8;margin-bottom:1.2rem;}
+.workshop-details{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.workshop-detail{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);display:flex;align-items:center;gap:0.4rem;}
+.workshop-detail-icon{font-size:0.9rem;}
+.workshop-card-cta{background:var(--warm);border-left:1px solid var(--border);padding:2.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;min-width:200px;}
+.workshop-price{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;text-align:center;}
+.workshop-price-note{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);text-align:center;margin-top:-0.5rem;}
+.enroll-btn{width:100%;padding:0.85rem;background:var(--ink);color:var(--cream);border:none;font-family:'Jost',sans-serif;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:all 0.2s;}
+.enroll-btn:hover{background:var(--gold);color:var(--ink);}
+.spots-note{font-size:0.72rem;color:var(--mid);text-align:center;}
+
+/* CORPORATE */
+.corporate-section{background:var(--warm);}
+.corporate-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.corporate-inner img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:sepia(8%);}
+.corporate-features{display:grid;gap:1.2rem;margin-top:2rem;}
+.corp-feature{display:flex;align-items:flex-start;gap:1rem;}
+.corp-feature-icon{width:2.5rem;height:2.5rem;background:var(--ink);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.corp-feature-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;margin-bottom:0.2rem;}
+.corp-feature p{font-size:0.85rem;color:var(--mid);line-height:1.7;}
+
+/* CTA */
+.cta-section{background:var(--ink);padding:6rem 4rem;text-align:center;}
+.cta-section h2{color:var(--cream);}
+.cta-section p{color:rgba(250,247,242,0.65);max-width:550px;margin:1.2rem auto 2.5rem;font-size:0.97rem;line-height:1.9;}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(26,20,16,0.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--cream);padding:3rem;max-width:500px;width:90%;position:relative;max-height:90vh;overflow-y:auto;}
+.modal-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--mid);}
+.modal h3{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:0.3rem;}
+.modal-pkg-price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);margin-bottom:1.5rem;}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{display:block;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:0.4rem;font-weight:500;}
+.form-group input,.form-group select{width:100%;padding:0.8rem 1rem;border:1px solid var(--border);background:white;font-family:'Jost',sans-serif;font-size:0.95rem;color:var(--ink);outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.cc-icons{display:flex;gap:0.5rem;margin-top:0.5rem;}
+.cc-icon{background:var(--warm);border:1px solid var(--border);padding:0.3rem 0.6rem;font-size:0.75rem;color:var(--mid);}
+.secure-note{font-size:0.75rem;color:var(--mid);display:flex;align-items:center;gap:0.4rem;margin-bottom:1rem;}
+.order-summary{background:var(--warm);padding:1.2rem 1.5rem;margin-bottom:1.5rem;border-left:3px solid var(--gold);}
+.order-summary p{font-size:0.88rem;color:var(--mid);}
+.submit-btn{width:100%;padding:1rem;background:var(--gold);color:var(--ink);border:none;font-family:'Jost',sans-serif;font-size:0.82rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.submit-btn:hover{background:var(--ink);color:var(--cream);}
+.modal-success{text-align:center;padding:2rem 0;}
+.modal-success .check{font-size:3rem;margin-bottom:1rem;}
+
+footer{background:var(--deep);color:rgba(250,247,242,0.6);padding:3rem 4rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--cream);margin-bottom:0.4rem;}
+.footer-logo span{color:var(--gold);}
+.footer-copy{font-size:0.78rem;}
+.footer-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
+.footer-links a{font-size:0.73rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,247,242,0.45);transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold);}
+
+@media(max-width:1100px){.workshop-card{grid-template-columns:1fr;}.workshop-card-img{height:40vw;}.workshop-card-cta{border-left:none;border-top:1px solid var(--border);flex-direction:row;justify-content:space-between;}}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}
+  .hero,.corporate-inner{grid-template-columns:1fr;}
+  .hero-right{height:60vw;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  section{padding:4rem 1.5rem;}
+  .why-section{padding:4rem 1.5rem;}
+  .cta-section{padding:4rem 1.5rem;}
+  footer{grid-template-columns:1fr;padding:2.5rem 1.5rem;}
+  .form-row{grid-template-columns:1fr;}
+  .workshop-card-cta{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Artes<span>Humanis</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#programs">Programs</a></li>
+    <li><a href="workshops.html" class="active">Workshops</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Journal</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html">Home</a><a href="mindbodypq.html">MINDBODYPQ</a><a href="brainvitality.html">BrainVitality360</a><a href="xelle.html">Xelle</a><a href="retreats.html">Retreats</a><a href="workshops.html">Workshops</a><a href="about.html">About</a><a href="blog.html">Journal</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="section-eyebrow fade-up">Workshops & Events</div>
+    <h1 class="fade-up delay-1">Transform in <em>a Day.</em></h1>
+    <p class="fade-up delay-2" style="color:var(--mid);max-width:460px;margin:1.5rem 0 2.5rem;font-size:0.97rem;line-height:1.9;">Our workshops are immersive, high-impact experiences designed to deliver real insight and embodied shift in a single focused session. No fluff — just transformation.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="#workshops" class="btn-primary">View Workshops</a>
+      <a href="contact.html" class="btn-outline">Corporate Enquiry</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80" alt="Workshop and group learning" />
+  </div>
+</div>
+
+<!-- WHY WORKSHOPS -->
+<div class="why-section">
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon">⚡</div><div class="why-title">High-Impact, Low-Barrier</div><p>A single workshop can unlock insights that take months to access in traditional coaching. Perfect for those not yet ready for a full program.</p></div>
+    <div class="why-card"><div class="why-icon">🤝</div><div class="why-title">Group Energy</div><p>Something extraordinary happens when a group of people commit to growth together. The collective field accelerates individual transformation.</p></div>
+    <div class="why-card"><div class="why-icon">🧰</div><div class="why-title">Practical Tools</div><p>You leave every workshop with concrete, embodied practices you can implement immediately — not just ideas or inspiration.</p></div>
+    <div class="why-card"><div class="why-icon">🚪</div><div class="why-title">A Gateway</div><p>Many of our deepest coaching relationships begin with a workshop. It's the perfect low-commitment way to experience the ArtesHumanis approach firsthand.</p></div>
+  </div>
+</div>
+
+<!-- WORKSHOPS -->
+<section class="workshops-section" id="workshops">
+  <div class="workshops-header">
+    <div class="section-eyebrow" style="justify-content:center;">Upcoming & On-Demand</div>
+    <h2>Our Workshop <em>Offerings</em></h2>
+    <p>All workshops are available in-person in the Los Angeles area and virtually worldwide. Corporate group bookings available for all formats.</p>
+  </div>
+  <div class="workshop-list">
+
+    <div class="workshop-card">
+      <div class="workshop-card-img">
+        <img src="https://images.unsplash.com/photo-1506126279646-a697353d3166?w=600&q=80" alt="Unveil Personal Energy workshop" />
+      </div>
+      <div class="workshop-card-body">
+        <div class="workshop-type">Flagship Workshop · Half-Day</div>
+        <div class="workshop-title">Unveil Your Personal Energy</div>
+        <p>Discover the hidden energy patterns that shape your presence, performance, and relationships. This flagship workshop introduces the Physical Intelligence framework through guided somatic practices, self-assessment, and group work. You'll leave with a clear picture of your unique energy profile — and how to work with it.</p>
+        <div class="workshop-details">
+          <span class="workshop-detail"><span class="workshop-detail-icon">⏱</span>Half-Day (4 hrs)</span>
+          <span class="workshop-detail"><span class="workshop-detail-icon">👥</span>Max 20 participants</span>
+          <span class="workshop-detail"><span class="workshop-detail-icon">📍</span>In-Person or Virtual</span>
+          <span class="workshop-detail"><span class="workshop-detail-icon">🗓</span>Monthly dates available</span>
+        </div>
+      </div>
+      <div class="workshop-card-cta">
+        <div class="workshop-price">$297</div>
+        <div class="workshop-price-note">per person</div>
+        <button class="enroll-btn" onclick="openModal('Unveil Your Personal Energy','$297','Half-day Physical Intelligence workshop')">Enroll Now</button>
+        <div class="spots-note">🔴 Limited spots available</div>
+      </div>
+    </div>
+
+    <div class="workshop-card">
+      <div class="workshop-card-img">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" alt="Women leadership workshop" />
+      </div>
+      <div class="workshop-card-body">
+        <div class="workshop-type">Leadership · Full-Day</div>
+        <div class="workshop-title">Lead From the Inside: Embodied Presence for Women</div>
+        <p>A powerful full-day immersion for women leaders ready to claim their presence and authority. Through embodied practices, paired exercises, and group work, participants develop the inner posture of leadership — the kind that doesn't require performance. This workshop draws directly from the Xelle methodology.</p>
+        <div class="workshop-details">
+          <span class="workshop-detail"><span class="workshop-detail-icon">⏱</span>Full Day (7 hrs)</span>
+          <span class="workshop-detail"><span class="workshop-detail-icon">👥</span>Max 16 women</span>
+          <span class="workshop-detail"><span class="workshop-detail-icon">📍</span>In-Person (LA area)</span>
+          <span class="workshop-detail"><span class="workshop-detail-icon">🗓</span>Quarterly</span>
+        </div>
+      </div>
+      <div class="workshop-card-cta">
+        <div class="workshop-price">$597</div>
+        <div class="workshop-price-note">per person</div>
+        <button class="enroll-btn" onclick="openModal('Embodied Presence for Women','$597','Full-day leadership immersion')">Enroll Now</button>
+        <div class="spots-note">🔴 4 spots remaining</div>
+      </div>
+    </div>
+
+    <div class="workshop-card">
+      <div class="workshop-card-img">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80" alt="Brain vitality workshop" />
+      </div>
+      <div class="workshop-card-body">
+        <div class="workshop-type">Brain Health · Half-Day</div>
+        <div class="workshop-title">Your Brain at Any Age: Neuroplasticity in Practice</div>
+        <p>An accessible, science-based introduction to cognitive longevity. This workshop demystifies neuroplasticity and gives participants practical, evidence-based tools to protect and strengthen their brain through movement, nutrition strategy, and daily practice. Ideal for adults 45+ and their families.</p>
+        <div class="workshop-details">
+          <span class="workshop-detail"><span class="workshop-detail-icon">⏱</span>Half-Day (3.5 hrs)</span>
+          <span class="workshop-detail"><span class="workshop-detail-icon">👥</span>Max 25 participants</span>
+          <span class="workshop-detail"><span class="workshop-detail-icon">📍</span>In-Person or Virtual</span>
+          <span class="workshop-detail"><span class="workshop-detail-icon">🗓</span>Bi-monthly</span>
+        </div>
+      </div>
+      <div class="workshop-card-cta">
+        <div class="workshop-price">$197</div>
+        <div class="workshop-price-note">per person</div>
+        <button class="enroll-btn" onclick="openModal('Brain Vitality Workshop','$197','Half-day neuroplasticity workshop')">Enroll Now</button>
+        <div class="spots-note">✅ Spots available</div>
+      </div>
+    </div>
+
+    <div class="workshop-card">
+      <div class="workshop-card-img">
+        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&q=80" alt="Breathwork and nervous system" />
+      </div>
+      <div class="workshop-card-body">
+        <div class="workshop-type">Wellbeing · Evening Intensive</div>
+        <div class="workshop-title">Reset: Breathwork & Nervous System Regulation</div>
+        <p>A three-hour evening intensive focused on practical breathwork and somatic techniques for nervous system regulation. Participants leave with a personal toolkit of techniques they can use immediately for stress response, emotional regulation, and sustained energy throughout the day.</p>
+        <div class="workshop-details">
+          <span class="workshop-detail"><span class="workshop-detail-icon">⏱</span>Evening (3 hrs)</span>
+          <span class="workshop-detail"><span class="workshop-detail-icon">👥</span>Max 30 participants</span>
+          <span class="workshop-detail"><span class="workshop-detail-icon">📍</span>In-Person or Virtual</span>
+          <span class="workshop-detail"><span class="workshop-detail-icon">🗓</span>Monthly</span>
+        </div>
+      </div>
+      <div class="workshop-card-cta">
+        <div class="workshop-price">$147</div>
+        <div class="workshop-price-note">per person</div>
+        <button class="enroll-btn" onclick="openModal('Reset: Breathwork Intensive','$147','3-hour evening breathwork workshop')">Enroll Now</button>
+        <div class="spots-note">✅ Spots available</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CORPORATE -->
+<section class="corporate-section">
+  <div class="corporate-inner">
+    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&q=80" alt="Corporate workshop team" />
+    <div>
+      <div class="section-eyebrow">Organizations</div>
+      <h2>Bring the Workshop to <em>Your Team</em></h2>
+      <p style="color:var(--mid);margin-top:1rem;font-size:0.97rem;line-height:1.9;">All ArtesHumanis workshops are available as private corporate engagements — fully customized to your organization's culture, goals, and industry context. We've delivered workshops for Fortune 500 companies, boutique firms, nonprofits, and leadership teams at every stage of growth.</p>
+      <div class="corporate-features">
+        <div class="corp-feature">
+          <div class="corp-feature-icon">🎯</div>
+          <div><div class="corp-feature-title">Fully Customized</div><p>Every workshop is tailored to your team's specific challenges, culture, and desired outcomes — not a generic off-the-shelf program.</p></div>
+        </div>
+        <div class="corp-feature">
+          <div class="corp-feature-icon">📈</div>
+          <div><div class="corp-feature-title">Measurable Outcomes</div><p>We define success metrics with you before the workshop and provide post-engagement assessment so you can track ROI.</p></div>
+        </div>
+        <div class="corp-feature">
+          <div class="corp-feature-icon">🌍</div>
+          <div><div class="corp-feature-title">Any Location</div><p>We travel to your offices, conference venues, or off-site locations. Virtual delivery available for distributed teams worldwide.</p></div>
+        </div>
+      </div>
+      <a href="contact.html" class="btn-primary" style="margin-top:2.5rem;display:inline-block;">Request Corporate Proposal</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="section-eyebrow" style="justify-content:center;color:rgba(201,169,110,0.7);">Next Steps</div>
+  <h2>Not sure which workshop is <em>right for you?</em></h2>
+  <p>Schedule a free 20-minute consultation and we'll point you to the experience that will have the most impact given where you are right now.</p>
+  <a href="contact.html" class="btn-primary">Book Free Consultation</a>
+</div>
+
+<footer>
+  <div>
+    <div class="footer-logo">Artes<span>Humanis</span></div>
+    <div class="footer-copy">© ArtesHumanis 2026. All rights reserved.</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#programs">Programs</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent">
+      <h3 id="modalTitle"></h3>
+      <div class="modal-pkg-price" id="modalPrice"></div>
+      <div class="order-summary"><p><strong id="modalDesc"></strong></p><p style="margin-top:0.3rem;font-size:0.8rem">✦ Secure checkout &nbsp;✦ Full refund if workshop cancelled</p></div>
+      <div class="form-group"><label>Full Name</label><input type="text" id="checkoutName" placeholder="Jane Smith" /></div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="jane@example.com" /></div>
+      <div class="form-group"><label>Preferred Date</label>
+        <select><option value="">Select a date</option><option>May 3, 2026 (In-Person, Los Angeles)</option><option>May 17, 2026 (Virtual)</option><option>June 7, 2026 (In-Person, Los Angeles)</option><option>June 21, 2026 (Virtual)</option></select>
+      </div>
+      <div class="form-group"><label>Card Number</label><input type="text" placeholder="4242 4242 4242 4242" maxlength="19" oninput="formatCard(this)" /><div class="cc-icons"><span class="cc-icon">VISA</span><span class="cc-icon">MC</span><span class="cc-icon">AMEX</span></div></div>
+      <div class="form-row">
+        <div class="form-group"><label>Expiry</label><input type="text" placeholder="MM / YY" maxlength="7" /></div>
+        <div class="form-group"><label>CVC</label><input type="text" placeholder="•••" maxlength="4" /></div>
+      </div>
+      <div class="secure-note">🔒 256-bit SSL encryption</div>
+      <button class="submit-btn" onclick="processPayment()">Reserve My Spot</button>
+      <p style="text-align:center;font-size:0.75rem;color:var(--mid);margin-top:1rem">Full refund available up to 7 days before the workshop date.</p>
+    </div>
+    <div id="modalSuccess" style="display:none" class="modal-success">
+      <div class="check">✅</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;">You're Registered!</h3>
+      <p>Your spot is confirmed. Check your email for details and preparation materials.</p>
+      <p style="margin-top:1rem;font-weight:500" id="successName"></p>
+      <button class="btn-primary" style="margin-top:2rem" onclick="closeModal()">Continue</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(title, price, desc) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalPrice').textContent = price;
+  document.getElementById('modalDesc').textContent = desc;
+  document.getElementById('modalContent').style.display = 'block';
+  document.getElementById('modalSuccess').style.display = 'none';
+  document.getElementById('checkoutModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('checkoutModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('checkoutModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+function formatCard(input) { let v = input.value.replace(/\D/g,'').substring(0,16); input.value = v.replace(/(.{4})/g,'$1 ').trim(); }
+function processPayment() {
+  const name = document.getElementById('checkoutName').value.trim();
+  if (!name) { alert('Please enter your name.'); return; }
+  document.getElementById('modalContent').style.display = 'none';
+  document.getElementById('successName').textContent = 'Welcome, ' + name + ' 🌟';
+  document.getElementById('modalSuccess').style.display = 'block';
+}
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.padding = window.scrollY > 50 ? '0.8rem 4rem' : '1.25rem 4rem';
+});
+</script>
+</body>
+</html>
