@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MINDBODYPQ — Personal Mastery | ArtesHumanis</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1410;--cream:#faf7f2;--warm:#f2ede4;--gold:#c9a96e;--gold-light:#e8d5b0;--deep:#2d2420;--mid:#5a4a3a;--border:rgba(201,169,110,0.25);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);font-weight:300;line-height:1.7;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(250,247,242,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:padding 0.3s;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;letter-spacing:0.08em;color:var(--ink);}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{font-size:0.76rem;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.55rem 1.3rem!important;}
+.nav-cta:hover{background:var(--gold)!important;color:var(--ink)!important;}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;}
+.hamburger span{width:24px;height:2px;background:var(--ink);display:block;}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--cream);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding-top:5rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-size:1.2rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);}
+section{padding:7rem 4rem;}
+.section-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;}
+.section-eyebrow::before{content:'';width:2rem;height:1px;background:var(--gold);}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:300;}
+h1{font-size:clamp(3rem,5vw,5.5rem);line-height:1.02;}
+h2{font-size:clamp(2rem,3.5vw,3.2rem);line-height:1.15;}
+h3{font-size:1.5rem;}
+em{font-style:italic;color:var(--gold);}
+.btn-primary{background:var(--gold);color:var(--ink);padding:1rem 2.5rem;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;display:inline-block;transition:background 0.2s,transform 0.2s;}
+.btn-primary:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px);}
+.btn-outline{border:1px solid var(--ink);color:var(--ink);padding:1rem 2.5rem;font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;display:inline-block;transition:all 0.2s;background:transparent;}
+.btn-outline:hover{background:var(--ink);color:var(--cream);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{animation:fadeUp 0.8s ease forwards;}
+.delay-1{animation-delay:0.15s;opacity:0;}
+.delay-2{animation-delay:0.3s;opacity:0;}
+.delay-3{animation-delay:0.45s;opacity:0;}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:80px;overflow:hidden;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem;position:relative;z-index:2;}
+.hero-right{position:relative;overflow:hidden;}
+.hero-img{width:100%;height:100%;object-fit:cover;filter:sepia(15%) contrast(1.05);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--cream) 0%,transparent 25%);}
+.hero-tag{display:inline-flex;align-items:center;gap:0.6rem;background:var(--warm);border:1px solid var(--border);padding:0.5rem 1rem;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:1.5rem;align-self:flex-start;}
+
+/* INTRO SPLIT */
+.intro-split{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.intro-split img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:sepia(10%);}
+.intro-split-text p{color:var(--mid);margin-top:1.2rem;font-size:0.97rem;line-height:1.9;}
+.intro-split-text p+p{margin-top:1rem;}
+
+/* PILLARS */
+.pillars-section{background:var(--ink);}
+.pillars-section h2{color:var(--cream);}
+.pillars-section .section-eyebrow{color:var(--gold);}
+.pillars-header{max-width:600px;margin-bottom:4rem;}
+.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.pillar-card{border:1px solid rgba(201,169,110,0.2);padding:2rem 1.5rem;}
+.pillar-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(201,169,110,0.3);margin-bottom:1rem;line-height:1;}
+.pillar-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold-light);margin-bottom:0.8rem;}
+.pillar-card p{font-size:0.85rem;color:rgba(250,247,242,0.6);line-height:1.8;}
+
+/* JOURNEY */
+.journey-section{background:var(--warm);}
+.journey-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.journey-steps{display:grid;gap:0;}
+.step{display:grid;grid-template-columns:3rem 1fr;gap:1.5rem;padding:1.8rem 0;border-bottom:1px solid var(--border);}
+.step:last-child{border-bottom:none;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--gold);line-height:1;padding-top:0.2rem;}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--ink);margin-bottom:0.4rem;}
+.step p{font-size:0.88rem;color:var(--mid);line-height:1.8;}
+
+/* PRICING */
+.pricing-section{}
+.pricing-header{text-align:center;max-width:600px;margin:0 auto 4rem;}
+.pricing-header p{color:var(--mid);margin-top:1rem;}
+.pricing-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;max-width:1000px;margin:0 auto;}
+.pricing-card{border:1px solid var(--border);padding:2.5rem;background:white;display:flex;flex-direction:column;text-align:center;transition:box-shadow 0.3s,transform 0.3s;}
+.pricing-card:hover{box-shadow:0 20px 50px rgba(0,0,0,0.09);transform:translateY(-4px);}
+.pricing-card.featured{background:var(--ink);color:var(--cream);border-color:var(--gold);}
+.featured-badge{display:inline-block;background:var(--gold);color:var(--ink);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.25rem 1rem;font-weight:600;margin-bottom:1rem;}
+.pricing-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;margin-bottom:0.3rem;}
+.pricing-sub{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;}
+.pricing-price{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;margin-bottom:0.2rem;}
+.pricing-period{font-size:0.8rem;color:var(--mid);margin-bottom:1.5rem;}
+.pricing-card.featured .pricing-period{color:rgba(250,247,242,0.5);}
+.feature-list{list-style:none;text-align:left;margin-bottom:2rem;flex:1;}
+.feature-item{font-size:0.85rem;color:var(--mid);padding:0.4rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.5rem;}
+.feature-item::before{content:'✦';color:var(--gold);font-size:0.55rem;flex-shrink:0;}
+.pricing-card.featured .feature-item{color:rgba(250,247,242,0.75);border-color:rgba(201,169,110,0.2);}
+.buy-btn{width:100%;padding:0.9rem;font-family:'Jost',sans-serif;font-size:0.76rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;cursor:pointer;border:none;transition:all 0.2s;}
+.buy-btn-dark{background:var(--ink);color:var(--cream);}
+.buy-btn-dark:hover{background:var(--gold);color:var(--ink);}
+.buy-btn-gold{background:var(--gold);color:var(--ink);}
+.buy-btn-gold:hover{background:var(--gold-light);}
+
+/* TESTIMONIALS STRIP */
+.testimonial-strip{background:var(--warm);padding:5rem 4rem;}
+.testimonial-strip-inner{max-width:800px;margin:0 auto;text-align:center;}
+.testimonial-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-style:italic;font-weight:300;line-height:1.6;color:var(--ink);margin-bottom:1.5rem;}
+.testimonial-attr{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);}
+.testimonial-stars{color:var(--gold);margin-bottom:1rem;}
+
+/* FAQ */
+.faq-section{display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:start;}
+.faq-list{display:grid;gap:0;}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden;}
+.faq-q{padding:1.3rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:0.95rem;font-weight:400;gap:1rem;}
+.faq-q .arrow{font-size:1.2rem;transition:transform 0.3s;color:var(--gold);flex-shrink:0;}
+.faq-item.open .arrow{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:1.2rem;}
+.faq-a p{font-size:0.9rem;color:var(--mid);line-height:1.8;}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(26,20,16,0.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--cream);padding:3rem;max-width:500px;width:90%;position:relative;max-height:90vh;overflow-y:auto;}
+.modal-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--mid);}
+.modal h3{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:0.3rem;}
+.modal-pkg-price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);margin-bottom:1.5rem;}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{display:block;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:0.4rem;font-weight:500;}
+.form-group input{width:100%;padding:0.8rem 1rem;border:1px solid var(--border);background:white;font-family:'Jost',sans-serif;font-size:0.95rem;color:var(--ink);outline:none;transition:border-color 0.2s;}
+.form-group input:focus{border-color:var(--gold);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.cc-icons{display:flex;gap:0.5rem;margin-top:0.5rem;}
+.cc-icon{background:var(--warm);border:1px solid var(--border);padding:0.3rem 0.6rem;font-size:0.75rem;color:var(--mid);}
+.secure-note{font-size:0.75rem;color:var(--mid);display:flex;align-items:center;gap:0.4rem;margin-bottom:1rem;}
+.order-summary{background:var(--warm);padding:1.2rem 1.5rem;margin-bottom:1.5rem;border-left:3px solid var(--gold);}
+.order-summary p{font-size:0.88rem;color:var(--mid);}
+.submit-btn{width:100%;padding:1rem;background:var(--gold);color:var(--ink);border:none;font-family:'Jost',sans-serif;font-size:0.82rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.submit-btn:hover{background:var(--ink);color:var(--cream);}
+.modal-success{text-align:center;padding:2rem 0;}
+.modal-success .check{font-size:3rem;margin-bottom:1rem;}
+
+footer{background:var(--deep);color:rgba(250,247,242,0.6);padding:3rem 4rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--cream);margin-bottom:0.4rem;}
+.footer-logo span{color:var(--gold);}
+.footer-copy{font-size:0.78rem;}
+.footer-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
+.footer-links a{font-size:0.73rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,247,242,0.45);transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold);}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero,.intro-split,.journey-grid,.faq-section{grid-template-columns:1fr;}
+  .hero-right{height:60vw;}
+  .pillars-grid{grid-template-columns:1fr 1fr;}
+  .pricing-cards{grid-template-columns:1fr;}
+  section{padding:4rem 1.5rem;}
+  .testimonial-strip{padding:3.5rem 1.5rem;}
+  footer{grid-template-columns:1fr;padding:2.5rem 1.5rem;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Artes<span>Humanis</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#programs">Programs</a></li>
+    <li><a href="index.html#shop">Packages</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="index.html#shop" class="nav-cta">Enroll Now</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="mindbodypq.html">MINDBODYPQ</a>
+  <a href="brainvitality.html">BrainVitality360</a>
+  <a href="xelle.html">Xelle Leadership</a>
+  <a href="retreats.html">Retreats</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Personal Mastery Program</div>
+    <h1 class="fade-up">MIND<br><em>BODY</em>PQ</h1>
+    <p class="fade-up delay-1" style="color:var(--mid);max-width:480px;margin:1.5rem 0 2.5rem;font-size:1rem;line-height:1.9;">Go Beyond Who You've Been. Discover Who You're Becoming. A guided journey into the core of who you are — through Physical Intelligence and embodied transformation.</p>
+    <div class="fade-up delay-2" style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <button class="btn-primary" onclick="openModal('MINDBODYPQ Transformation','$2,497','12-session immersive journey')">Begin Your Journey</button>
+      <a href="#intro" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=900&q=80" alt="Mindfulness and personal transformation" />
+    <div class="hero-overlay"></div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="intro-split">
+    <img src="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=700&q=80" alt="Embodied coaching session" />
+    <div class="intro-split-text">
+      <div class="section-eyebrow">The Program</div>
+      <h2>This is not self-improvement <em>as usual.</em></h2>
+      <p>MINDBODYPQ is for individuals who feel called to more — more clarity, more depth, more alignment, more truth. It is a guided, transformative journey into the core of who you are, based on ancient mind-body techniques fused with modern neuroscience.</p>
+      <p>Through personalized coaching and embodied Physical Intelligence practices, you will uncover hidden patterns, unlock untapped strengths, and expand your capacity to navigate life with confidence and resilience.</p>
+      <p>You will learn to work with your energy, sharpen your awareness, and cultivate a growth mindset rooted not just in thought — but in lived, embodied experience.</p>
+      <p style="margin-top:2rem;"><a href="#pricing" class="btn-primary">View Packages</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars-section">
+  <div class="pillars-header">
+    <div class="section-eyebrow">What You'll Develop</div>
+    <h2 style="color:var(--cream);">The Four <em>Competencies</em></h2>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">Self-Awareness</div>
+      <p>Recognize the unconscious patterns in your body, emotions, and behavior that have been quietly shaping every decision and outcome in your life.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">Emotional Resilience</div>
+      <p>Develop the capacity to navigate stress, uncertainty, and change with steadiness — returning to center faster and more consistently than before.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">Inner Authority</div>
+      <p>Reconnect with your internal guidance system. Stop seeking external validation and begin trusting the wisdom that lives within your body and intuition.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">04</div>
+      <div class="pillar-title">Embodied Growth</div>
+      <p>Move beyond insight into integrated change — transformation that is felt, lived, and sustainable long after the program ends.</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY / HOW IT WORKS -->
+<section class="journey-section">
+  <div class="journey-grid">
+    <div>
+      <div class="section-eyebrow">The Process</div>
+      <h2>How the <em>Journey</em> Unfolds</h2>
+      <p style="color:var(--mid);margin-top:1rem;font-size:0.97rem;line-height:1.9;">Each MINDBODYPQ journey is tailored to you. We begin with a deep assessment, then move through progressive phases of exploration, integration, and embodied mastery.</p>
+      <p style="color:var(--mid);margin-top:1rem;font-size:0.97rem;line-height:1.9;">Sessions combine somatic practices, reflective coaching, energy awareness exercises, and strategic action — creating shifts that are felt on every level.</p>
+    </div>
+    <div class="journey-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Discovery & Assessment</div>
+          <p>A comprehensive Physical Intelligence profile reveals your unique patterns, strengths, and the hidden dynamics shaping your current experience.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">Pattern Recognition</div>
+          <p>Through guided coaching and embodied practices, you begin to see the conditioning that has been running below conscious awareness.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Integration & Shift</div>
+          <p>Old patterns release as new competencies take root. You develop a personalized practice that sustains and deepens your transformation daily.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">Embodied Mastery</div>
+          <p>You emerge with new inner authority, emotional resilience, and the capacity to navigate life from a place of clarity, strength, and aligned purpose.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL STRIP -->
+<div class="testimonial-strip">
+  <div class="testimonial-strip-inner">
+    <div class="testimonial-stars">★★★★★</div>
+    <p class="testimonial-quote">"MINDBODYPQ was unlike anything I'd tried before. Within three sessions I could feel a genuine shift — not just in my thinking, but in how I hold myself, how I breathe, how I walk into a room. This is real transformation."</p>
+    <div class="testimonial-attr">— Michelle R., Executive Coach & MINDBODYPQ Graduate</div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-header">
+    <div class="section-eyebrow" style="justify-content:center;">Invest In Yourself</div>
+    <h2>MINDBODYPQ <em>Packages</em></h2>
+    <p>Every engagement is personalized. Choose the depth of journey that calls to you.</p>
+  </div>
+  <div class="pricing-cards">
+    <div class="pricing-card">
+      <div class="pricing-name">Discovery</div>
+      <div class="pricing-sub">Single Session</div>
+      <div class="pricing-price">$397</div>
+      <div class="pricing-period">90-min session + assessment</div>
+      <ul class="feature-list">
+        <li class="feature-item">Physical Intelligence assessment</li>
+        <li class="feature-item">90-min personalized session</li>
+        <li class="feature-item">Custom growth roadmap</li>
+        <li class="feature-item">2-week email support</li>
+        <li class="feature-item">Resource library access</li>
+      </ul>
+      <button class="buy-btn buy-btn-dark" onclick="openModal('Discovery Session','$397','Single 90-min session')">Enroll Now</button>
+    </div>
+    <div class="pricing-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="pricing-name">Transformation</div>
+      <div class="pricing-sub">3-Month Journey</div>
+      <div class="pricing-price">$2,497</div>
+      <div class="pricing-period">12 sessions + full support</div>
+      <ul class="feature-list">
+        <li class="feature-item">12 × 60-min coaching sessions</li>
+        <li class="feature-item">Bi-weekly group calls</li>
+        <li class="feature-item">Unlimited WhatsApp support</li>
+        <li class="feature-item">Complete program materials</li>
+        <li class="feature-item">Personalized practice plan</li>
+        <li class="feature-item">1-month post-program support</li>
+      </ul>
+      <button class="buy-btn buy-btn-gold" onclick="openModal('MINDBODYPQ Transformation','$2,497','12 sessions over 3 months')">Enroll Now</button>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-name">Immersive</div>
+      <div class="pricing-sub">6-Month Deep Dive</div>
+      <div class="pricing-price">$4,497</div>
+      <div class="pricing-period">24 sessions + retreat day</div>
+      <ul class="feature-list">
+        <li class="feature-item">24 × 60-min sessions</li>
+        <li class="feature-item">Full program + advanced modules</li>
+        <li class="feature-item">Private retreat day (in-person)</li>
+        <li class="feature-item">Priority scheduling</li>
+        <li class="feature-item">Ongoing support 6 months</li>
+        <li class="feature-item">Alumni community access</li>
+      </ul>
+      <button class="buy-btn buy-btn-dark" onclick="openModal('MINDBODYPQ Immersive','$4,497','6-month deep dive + retreat')">Enroll Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--warm);">
+  <div class="faq-section">
+    <div>
+      <div class="section-eyebrow">Questions</div>
+      <h2>Frequently <em>Asked</em></h2>
+      <p style="color:var(--mid);margin-top:1rem;font-size:0.9rem;">Still wondering if MINDBODYPQ is right for you? Reach out for a free 20-minute call.</p>
+      <a href="contact.html" class="btn-primary" style="margin-top:2rem;display:inline-block;">Book Free Call</a>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What makes MINDBODYPQ different from regular coaching? <span class="arrow">+</span></div>
+        <div class="faq-a"><p>Most coaching works with the mind alone. MINDBODYPQ works with the full intelligence of the body — addressing the somatic patterns and nervous system conditioning that regular coaching never reaches. This is why the results are deeper and longer-lasting.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do sessions happen in person or virtually? <span class="arrow">+</span></div>
+        <div class="faq-a"><p>All sessions are available virtually via Zoom. In-person sessions are available in the Brentwood, California area. The Immersive package includes an optional in-person retreat day.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How quickly will I notice results? <span class="arrow">+</span></div>
+        <div class="faq-a"><p>Many clients report noticing shifts within the first 2–3 sessions. The depth and permanence of change grows progressively throughout the program as new patterns become integrated into daily life.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is there a refund policy? <span class="arrow">+</span></div>
+        <div class="faq-a"><p>Yes. We offer a full refund within 14 days of enrollment if you feel MINDBODYPQ is not the right fit. We are committed to your transformation and will always work with you to find the best path forward.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can this be used for corporate teams? <span class="arrow">+</span></div>
+        <div class="faq-a"><p>Yes — MINDBODYPQ principles are available in a corporate format as workshops and group programs. Contact us to design a custom engagement for your organization.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Artes<span>Humanis</span></div>
+    <div class="footer-copy">© ArtesHumanis 2026. All rights reserved.</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="brainvitality.html">BrainVitality360</a></li>
+    <li><a href="xelle.html">Xelle</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent">
+      <h3 id="modalTitle">Program</h3>
+      <div class="modal-pkg-price" id="modalPrice"></div>
+      <div class="order-summary">
+        <p><strong id="modalDesc"></strong></p>
+        <p style="margin-top:0.3rem;font-size:0.8rem">✦ Secure checkout &nbsp;✦ Instant confirmation &nbsp;✦ 14-day guarantee</p>
+      </div>
+      <div class="form-group"><label>Full Name</label><input type="text" id="checkoutName" placeholder="Jane Smith" /></div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="jane@example.com" /></div>
+      <div class="form-group"><label>Card Number</label><input type="text" placeholder="4242 4242 4242 4242" maxlength="19" oninput="formatCard(this)" /><div class="cc-icons"><span class="cc-icon">VISA</span><span class="cc-icon">MC</span><span class="cc-icon">AMEX</span></div></div>
+      <div class="form-row">
+        <div class="form-group"><label>Expiry</label><input type="text" placeholder="MM / YY" maxlength="7" /></div>
+        <div class="form-group"><label>CVC</label><input type="text" placeholder="•••" maxlength="4" /></div>
+      </div>
+      <div class="secure-note">🔒 256-bit SSL encryption</div>
+      <button class="submit-btn" onclick="processPayment()">Complete Enrollment</button>
+      <p style="text-align:center;font-size:0.75rem;color:var(--mid);margin-top:1rem">14-day money-back guarantee if not satisfied.</p>
+    </div>
+    <div id="modalSuccess" style="display:none" class="modal-success">
+      <div class="check">✅</div>
+      <h3>You're Enrolled!</h3>
+      <p>Welcome to ArtesHumanis. Check your email for next steps.</p>
+      <p style="margin-top:1rem;font-weight:500" id="successName"></p>
+      <button class="btn-primary" style="margin-top:2rem" onclick="closeModal()">Continue</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(title,price,desc){document.getElementById('modalTitle').textContent=title;document.getElementById('modalPrice').textContent=price;document.getElementById('modalDesc').textContent=desc;document.getElementById('modalContent').style.display='block';document.getElementById('modalSuccess').style.display='none';document.getElementById('checkoutModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('checkoutModal').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('checkoutModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+function formatCard(input){let v=input.value.replace(/\D/g,'').substring(0,16);input.value=v.replace(/(.{4})/g,'$1 ').trim();}
+function processPayment(){const name=document.getElementById('checkoutName').value.trim();if(!name){alert('Please enter your name.');return;}document.getElementById('modalContent').style.display='none';document.getElementById('successName').textContent='Welcome, '+name+' 🌟';document.getElementById('modalSuccess').style.display='block';}
+function toggleFaq(el){const item=el.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');}
+window.addEventListener('scroll',()=>{const nav=document.querySelector('nav');nav.style.padding=window.scrollY>50?'0.8rem 4rem':'1.25rem 4rem';});
+</script>
+</body>
+</html>
