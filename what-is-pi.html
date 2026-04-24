@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is Physical Intelligence? | ArtesHumanis</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1410;--cream:#faf7f2;--warm:#f2ede4;--gold:#c9a96e;--gold-light:#e8d5b0;--deep:#2d2420;--mid:#5a4a3a;--border:rgba(201,169,110,0.25);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);font-weight:300;line-height:1.7;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(250,247,242,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:padding 0.3s;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;letter-spacing:0.08em;color:var(--ink);}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{font-size:0.76rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.55rem 1.3rem!important;}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;}
+.hamburger span{width:24px;height:2px;background:var(--ink);display:block;}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--cream);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding-top:5rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-size:1.2rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);}
+section{padding:7rem 4rem;}
+.section-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;}
+.section-eyebrow::before{content:'';width:2rem;height:1px;background:var(--gold);}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:300;}
+h1{font-size:clamp(3rem,5vw,5rem);line-height:1.05;}
+h2{font-size:clamp(2rem,3.5vw,3rem);line-height:1.15;}
+em{font-style:italic;color:var(--gold);}
+.btn-primary{background:var(--gold);color:var(--ink);padding:1rem 2.5rem;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;display:inline-block;transition:background 0.2s,transform 0.2s;}
+.btn-primary:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{animation:fadeUp 0.8s ease forwards;}.delay-1{animation-delay:0.15s;opacity:0;}.delay-2{animation-delay:0.3s;opacity:0;}
+
+.hero{background:var(--ink);min-height:80vh;display:flex;align-items:center;padding-top:80px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1506126279646-a697353d3166?w=1400&q=80') center/cover no-repeat;opacity:0.2;filter:sepia(30%);}
+.hero-content{position:relative;z-index:2;padding:4rem;max-width:800px;}
+.three-types{background:var(--warm);padding:5rem 4rem;}
+.three-types-header{text-align:center;max-width:700px;margin:0 auto 4rem;}
+.types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);}
+.type-card{padding:3rem 2.5rem;border-right:1px solid var(--border);}
+.type-card:last-child{border-right:none;}
+.type-icon{font-size:2.5rem;margin-bottom:1.2rem;}
+.type-label{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+.type-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:1rem;}
+.type-card p{font-size:0.88rem;color:var(--mid);line-height:1.8;}
+.type-card.pi{background:var(--ink);}
+.type-card.pi .type-name{color:var(--cream);}
+.type-card.pi p{color:rgba(250,247,242,0.65);}
+.explainer{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.explainer img{width:100%;aspect-ratio:1;object-fit:cover;filter:sepia(12%);}
+.explainer-text p{color:var(--mid);margin-top:1rem;font-size:0.97rem;line-height:1.9;}
+.explainer-text p+p{margin-top:1rem;}
+.how-it-works{background:var(--ink);}
+.how-it-works h2{color:var(--cream);}
+.how-header{max-width:550px;margin-bottom:4rem;}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.step-card{border-top:2px solid rgba(201,169,110,0.3);padding:2rem 0 0;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(201,169,110,0.3);line-height:1;margin-bottom:1rem;}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold-light);margin-bottom:0.7rem;}
+.step-card p{font-size:0.85rem;color:rgba(250,247,242,0.6);line-height:1.8;}
+.science-section{background:var(--warm);}
+.science-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.science-points{display:grid;gap:2rem;}
+.science-point{display:flex;gap:1.5rem;align-items:flex-start;}
+.science-point-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--gold);line-height:1;padding-top:0.1rem;flex-shrink:0;}
+.science-point-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;margin-bottom:0.4rem;}
+.science-point p{font-size:0.88rem;color:var(--mid);line-height:1.8;}
+.cta-band{background:var(--gold);padding:5rem 4rem;text-align:center;}
+.cta-band h2{color:var(--ink);}
+.cta-band p{color:rgba(26,20,16,0.7);max-width:550px;margin:1rem auto 2.5rem;}
+.btn-dark{background:var(--ink);color:var(--cream);padding:1rem 2.5rem;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;display:inline-block;transition:all 0.2s;margin:0 0.5rem;}
+.btn-dark:hover{background:var(--deep);}
+footer{background:var(--deep);color:rgba(250,247,242,0.6);padding:3rem 4rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--cream);margin-bottom:0.4rem;}
+.footer-logo span{color:var(--gold);}
+.footer-copy{font-size:0.78rem;}
+.footer-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
+.footer-links a{font-size:0.73rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,247,242,0.45);transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold);}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}
+  .types-grid,.explainer,.science-grid{grid-template-columns:1fr;}
+  .steps-grid{grid-template-columns:1fr 1fr;}
+  section{padding:4rem 1.5rem;}
+  .three-types{padding:4rem 1.5rem;}
+  .cta-band{padding:4rem 1.5rem;}
+  footer{grid-template-columns:1fr;padding:2.5rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Artes<span>Humanis</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#programs">Programs</a></li>
+    <li><a href="index.html#shop">Packages</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="index.html#shop" class="nav-cta">Enroll Now</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu"><a href="index.html">Home</a><a href="mindbodypq.html">MINDBODYPQ</a><a href="brainvitality.html">BrainVitality360</a><a href="xelle.html">Xelle</a><a href="retreats.html">Retreats</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="section-eyebrow fade-up">The Science & Philosophy</div>
+    <h1 class="fade-up delay-1" style="color:var(--cream);">What is <em>Physical Intelligence?</em></h1>
+    <p class="fade-up delay-2" style="color:rgba(250,247,242,0.75);max-width:600px;margin-top:1.5rem;font-size:1rem;line-height:1.9;">Your thoughts, emotions, and physical state do not arise in isolation. They are shaped by deeper, often unseen patterns embedded within the body — patterns that quietly influence how you think, decide, react, and perform.</p>
+  </div>
+</div>
+
+<div class="three-types">
+  <div class="three-types-header">
+    <div class="section-eyebrow" style="justify-content:center;">Three Forms of Intelligence</div>
+    <h2>Beyond IQ and <em>Emotional Intelligence</em></h2>
+    <p style="color:var(--mid);margin-top:1rem;font-size:0.97rem;">We have long recognized two forms of intelligence. Physical Intelligence is the third — and arguably the most foundational of all.</p>
+  </div>
+  <div class="types-grid">
+    <div class="type-card"><div class="type-icon">🧩</div><div class="type-label">Cognitive</div><div class="type-name">IQ</div><p>The intelligence of thinking, reasoning, analyzing, and problem-solving. Measured and valued in academic and professional contexts for over a century.</p></div>
+    <div class="type-card"><div class="type-icon">💛</div><div class="type-label">Emotional</div><div class="type-name">EQ</div><p>The intelligence of feelings, empathy, and interpersonal relationship. Widely recognized as essential for leadership and human connection.</p></div>
+    <div class="type-card pi"><div class="type-icon">⚡</div><div class="type-label" style="color:var(--gold);">Somatic</div><div class="type-name">PQ</div><p>The intelligence of the body — how you move, breathe, hold tension, and process sensation. This shapes every thought, decision, and relationship you have.</p></div>
+  </div>
+</div>
+
+<section>
+  <div class="explainer">
+    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=700&q=80" alt="Body intelligence and awareness" />
+    <div class="explainer-text">
+      <div class="section-eyebrow">The Core Concept</div>
+      <h2>Your body is <em>not separate</em> from your mind.</h2>
+      <p>Physical Intelligence is the intelligence that lives in and through the body. It encompasses the neurological, physiological, and somatic systems that shape how you perceive the world, process experience, and generate behavior.</p>
+      <p>Most leadership and personal development approaches work primarily with the mind — with beliefs, thoughts, mindset. This is valuable. But it misses the deeper layer where those beliefs are stored and sustained: the body itself.</p>
+      <p>The patterns that keep us stuck — in reactive behavior, limiting self-perception, chronic stress, disconnection from purpose — are not just mental habits. They are somatic patterns. They live in posture, breath, movement, and nervous system tone.</p>
+      <p>Physical Intelligence is the capacity to perceive and work with these patterns directly. When you develop this intelligence, transformation becomes not just possible — it becomes inevitable.</p>
+    </div>
+  </div>
+</section>
+
+<section class="how-it-works">
+  <div class="how-header">
+    <div class="section-eyebrow">The Process</div>
+    <h2>How Physical Intelligence <em>Works</em></h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-num">01</div><div class="step-title">Pattern Recognition</div><p>You begin to notice the somatic signatures of your habitual patterns — how stress lives in your shoulders, how confidence (or fear) changes your breath and posture.</p></div>
+    <div class="step-card"><div class="step-num">02</div><div class="step-title">Awareness & Choice</div><p>Once you can perceive a pattern, you gain something precious: the moment between stimulus and response. This is where choice becomes possible.</p></div>
+    <div class="step-card"><div class="step-num">03</div><div class="step-title">Embodied Practice</div><p>Through deliberate, guided practices, you begin to rewire the somatic patterns — building new neural pathways and embodied responses through repetition.</p></div>
+    <div class="step-card"><div class="step-num">04</div><div class="step-title">Integrated Mastery</div><p>New patterns become automatic. You no longer have to think about regulating emotion or projecting presence — it becomes who you are, not what you do.</p></div>
+  </div>
+</section>
+
+<section class="science-section">
+  <div class="science-grid">
+    <div>
+      <div class="section-eyebrow">The Research</div>
+      <h2>Grounded in <em>Neuroscience</em></h2>
+      <p style="color:var(--mid);margin-top:1rem;font-size:0.97rem;line-height:1.9;">Physical Intelligence is not a metaphor. It is a scientifically grounded framework supported by decades of research in neuroscience, somatic psychology, and embodied cognition.</p>
+    </div>
+    <div class="science-points">
+      <div class="science-point"><div class="science-point-num">1</div><div><div class="science-point-title">Embodied Cognition</div><p>Research in cognitive science demonstrates that the body actively participates in thinking — that posture, gesture, and movement directly influence the quality and content of thought.</p></div></div>
+      <div class="science-point"><div class="science-point-num">2</div><div><div class="science-point-title">Polyvagal Theory</div><p>Dr. Stephen Porges' groundbreaking work shows how the autonomic nervous system shapes social engagement, emotional regulation, and our sense of safety — all from the body upward.</p></div></div>
+      <div class="science-point"><div class="science-point-num">3</div><div><div class="science-point-title">Neuroplasticity</div><p>The brain remains capable of forming new connections throughout life — and the most powerful stimulants for neuroplasticity are movement, sensory input, and novel physical experience.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2>Ready to develop your <em style="color:var(--ink);">Physical Intelligence?</em></h2>
+  <p>Explore our programs or schedule a complimentary consultation to find the right starting point for your journey.</p>
+  <a href="index.html#programs" class="btn-dark">Explore Programs</a>
+  <a href="contact.html" class="btn-dark" style="background:transparent;border:1px solid var(--ink);">Book Free Call</a>
+</div>
+
+<footer>
+  <div><div class="footer-logo">Artes<span>Humanis</span></div><div class="footer-copy">© ArtesHumanis 2026. All rights reserved.</div></div>
+  <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="mindbodypq.html">MINDBODYPQ</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+</footer>
+<script>window.addEventListener('scroll',()=>{const nav=document.querySelector('nav');nav.style.padding=window.scrollY>50?'0.8rem 4rem':'1.25rem 4rem';});</script>
+</body>
+</html>
