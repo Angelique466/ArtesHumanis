@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrainVitality360™ — Cognitive Longevity | ArtesHumanis</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1410;--cream:#faf7f2;--warm:#f2ede4;--gold:#c9a96e;--gold-light:#e8d5b0;--deep:#2d2420;--mid:#5a4a3a;--border:rgba(201,169,110,0.25);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);font-weight:300;line-height:1.7;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(250,247,242,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:padding 0.3s;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;letter-spacing:0.08em;color:var(--ink);}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{font-size:0.76rem;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:0.55rem 1.3rem!important;}
+.nav-cta:hover{background:var(--gold)!important;color:var(--ink)!important;}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;}
+.hamburger span{width:24px;height:2px;background:var(--ink);display:block;}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--cream);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding-top:5rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-size:1.2rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);}
+section{padding:7rem 4rem;}
+.section-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;}
+.section-eyebrow::before{content:'';width:2rem;height:1px;background:var(--gold);}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:300;}
+h1{font-size:clamp(2.8rem,5vw,5rem);line-height:1.05;}
+h2{font-size:clamp(2rem,3.5vw,3.2rem);line-height:1.15;}
+em{font-style:italic;color:var(--gold);}
+.btn-primary{background:var(--gold);color:var(--ink);padding:1rem 2.5rem;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;display:inline-block;transition:background 0.2s,transform 0.2s;}
+.btn-primary:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px);}
+.btn-outline{border:1px solid var(--ink);color:var(--ink);padding:1rem 2.5rem;font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;display:inline-block;transition:all 0.2s;background:transparent;}
+.btn-outline:hover{background:var(--ink);color:var(--cream);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{animation:fadeUp 0.8s ease forwards;}
+.delay-1{animation-delay:0.15s;opacity:0;}
+.delay-2{animation-delay:0.3s;opacity:0;}
+
+/* HERO — dark version for Brain page */
+.hero{background:var(--deep);min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:80px;overflow:hidden;position:relative;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem;position:relative;z-index:2;}
+.hero-tag{display:inline-flex;align-items:center;gap:0.6rem;border:1px solid rgba(201,169,110,0.35);padding:0.5rem 1rem;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.5rem;align-self:flex-start;}
+.hero-right{position:relative;overflow:hidden;}
+.hero-img{width:100%;height:100%;object-fit:cover;filter:sepia(20%) brightness(0.7);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--deep) 0%,transparent 35%);}
+.hero-sub-stat{display:flex;gap:3rem;margin-top:3rem;}
+.sub-stat-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--gold);display:block;}
+.sub-stat-label{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(250,247,242,0.5);}
+
+/* SCIENCE STRIP */
+.science-strip{background:var(--gold);padding:2.5rem 4rem;display:flex;align-items:center;gap:4rem;flex-wrap:wrap;}
+.science-item{display:flex;align-items:center;gap:1rem;}
+.science-icon{font-size:1.5rem;}
+.science-text{font-size:0.82rem;font-weight:500;letter-spacing:0.05em;color:var(--ink);}
+
+/* WHAT IS */
+.what-is{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.what-is img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:sepia(10%);}
+.what-is-text p{color:var(--mid);margin-top:1rem;font-size:0.97rem;line-height:1.9;}
+.what-is-text p+p{margin-top:1rem;}
+
+/* BENEFITS */
+.benefits-section{background:var(--warm);}
+.benefits-header{text-align:center;max-width:600px;margin:0 auto 4rem;}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.benefit-card{background:white;padding:2.5rem;border-top:3px solid transparent;transition:border-color 0.3s,transform 0.3s;}
+.benefit-card:hover{border-top-color:var(--gold);transform:translateY(-4px);}
+.benefit-icon{font-size:2rem;margin-bottom:1.2rem;}
+.benefit-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;margin-bottom:0.6rem;}
+.benefit-card p{font-size:0.88rem;color:var(--mid);line-height:1.8;}
+
+/* PROGRAMS */
+.programs-section{background:var(--ink);}
+.programs-section h2{color:var(--cream);}
+.programs-header{max-width:550px;margin-bottom:4rem;}
+.programs-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.prog-card{border:1px solid rgba(201,169,110,0.2);padding:2.5rem;display:flex;flex-direction:column;}
+.prog-for{font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
+.prog-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--cream);margin-bottom:1rem;}
+.prog-card p{font-size:0.88rem;color:rgba(250,247,242,0.65);line-height:1.8;flex:1;}
+.prog-price{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);margin:1.5rem 0 1rem;}
+.prog-buy{padding:0.8rem;background:var(--gold);color:var(--ink);border:none;font-family:'Jost',sans-serif;font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:all 0.2s;width:100%;}
+.prog-buy:hover{background:var(--gold-light);}
+
+/* TESTIMONIAL */
+.testimonial-strip{background:var(--warm);padding:5rem 4rem;}
+.testimonial-strip-inner{max-width:800px;margin:0 auto;text-align:center;}
+.testimonial-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-style:italic;font-weight:300;line-height:1.6;color:var(--ink);margin-bottom:1.5rem;}
+.testimonial-attr{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);}
+.testimonial-stars{color:var(--gold);margin-bottom:1rem;}
+
+/* CTA BAND */
+.cta-band{background:var(--gold);padding:5rem 4rem;text-align:center;}
+.cta-band h2{color:var(--ink);}
+.cta-band p{color:rgba(26,20,16,0.75);max-width:500px;margin:1rem auto 2.5rem;font-size:0.97rem;}
+.btn-dark{background:var(--ink);color:var(--cream);padding:1rem 2.5rem;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;display:inline-block;transition:all 0.2s;}
+.btn-dark:hover{background:var(--deep);}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(26,20,16,0.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--cream);padding:3rem;max-width:500px;width:90%;position:relative;max-height:90vh;overflow-y:auto;}
+.modal-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--mid);}
+.modal h3{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:0.3rem;}
+.modal-pkg-price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);margin-bottom:1.5rem;}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{display:block;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:0.4rem;font-weight:500;}
+.form-group input{width:100%;padding:0.8rem 1rem;border:1px solid var(--border);background:white;font-family:'Jost',sans-serif;font-size:0.95rem;color:var(--ink);outline:none;transition:border-color 0.2s;}
+.form-group input:focus{border-color:var(--gold);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.cc-icons{display:flex;gap:0.5rem;margin-top:0.5rem;}
+.cc-icon{background:var(--warm);border:1px solid var(--border);padding:0.3rem 0.6rem;font-size:0.75rem;color:var(--mid);}
+.secure-note{font-size:0.75rem;color:var(--mid);display:flex;align-items:center;gap:0.4rem;margin-bottom:1rem;}
+.order-summary{background:var(--warm);padding:1.2rem 1.5rem;margin-bottom:1.5rem;border-left:3px solid var(--gold);}
+.order-summary p{font-size:0.88rem;color:var(--mid);}
+.submit-btn{width:100%;padding:1rem;background:var(--gold);color:var(--ink);border:none;font-family:'Jost',sans-serif;font-size:0.82rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.submit-btn:hover{background:var(--ink);color:var(--cream);}
+.modal-success{text-align:center;padding:2rem 0;}
+.modal-success .check{font-size:3rem;margin-bottom:1rem;}
+
+footer{background:var(--deep);color:rgba(250,247,242,0.6);padding:3rem 4rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--cream);margin-bottom:0.4rem;}
+.footer-logo span{color:var(--gold);}
+.footer-copy{font-size:0.78rem;}
+.footer-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
+.footer-links a{font-size:0.73rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,247,242,0.45);transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold);}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero,.what-is{grid-template-columns:1fr;}
+  .hero-right{height:55vw;}
+  .benefits-grid,.programs-cards{grid-template-columns:1fr;}
+  section{padding:4rem 1.5rem;}
+  .science-strip{padding:2rem 1.5rem;gap:2rem;}
+  .cta-band{padding:4rem 1.5rem;}
+  .testimonial-strip{padding:3.5rem 1.5rem;}
+  footer{grid-template-columns:1fr;padding:2.5rem 1.5rem;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Artes<span>Humanis</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#programs">Programs</a></li>
+    <li><a href="index.html#shop">Packages</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="index.html#shop" class="nav-cta">Enroll Now</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html">Home</a><a href="mindbodypq.html">MINDBODYPQ</a><a href="brainvitality.html">BrainVitality360</a><a href="xelle.html">Xelle</a><a href="retreats.html">Retreats</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Cognitive Longevity Program</div>
+    <h1 class="fade-up" style="color:var(--cream);">Brain<em>Vitality</em><br>360™</h1>
+    <p class="fade-up delay-1" style="color:rgba(250,247,242,0.7);max-width:480px;margin:1.5rem 0 2.5rem;font-size:1rem;line-height:1.9;">A science-driven approach to cognitive longevity. Stimulate neuroplasticity through the body — enhancing focus, memory, clarity, and long-term brain health.</p>
+    <div class="fade-up delay-2" style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <button class="btn-primary" onclick="openModal('BrainVitality360 Starter','$697','4-session program')">Begin Program</button>
+      <a href="#what" class="btn-outline" style="border-color:rgba(250,247,242,0.35);color:var(--cream);">Learn More</a>
+    </div>
+    <div class="hero-sub-stat">
+      <div><span class="sub-stat-num">70%</span><span class="sub-stat-label">of cognitive decline is preventable</span></div>
+      <div><span class="sub-stat-num">12wk</span><span class="sub-stat-label">average to measurable improvement</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=900&q=80" alt="Brain health and cognitive vitality" />
+    <div class="hero-overlay"></div>
+  </div>
+</div>
+
+<!-- SCIENCE STRIP -->
+<div class="science-strip">
+  <div class="science-item"><span class="science-icon">🧬</span><span class="science-text">Evidence-based neuroplasticity protocols</span></div>
+  <div class="science-item"><span class="science-icon">🏃</span><span class="science-text">Movement-driven brain stimulation</span></div>
+  <div class="science-item"><span class="science-icon">📊</span><span class="science-text">Measurable cognitive outcomes</span></div>
+  <div class="science-item"><span class="science-icon">🎯</span><span class="science-text">Personalized concierge approach</span></div>
+</div>
+
+<!-- WHAT IS -->
+<section id="what">
+  <div class="what-is">
+    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=700&q=80" alt="Brain science" />
+    <div class="what-is-text">
+      <div class="section-eyebrow">The Science</div>
+      <h2>Why the body is the <em>gateway to the brain</em></h2>
+      <p>Neuroplasticity — the brain's capacity to form new connections — responds powerfully to physical stimulation. Targeted movement, sensory activation, and breath patterns directly influence neural pathways associated with focus, memory, and executive function.</p>
+      <p>BrainVitality360™ uses this science to create a holistic, embodied approach to brain health. Rather than treating the brain in isolation, we engage the entire brain-body system — activating the regions most responsible for cognitive vitality, emotional regulation, and mental resilience.</p>
+      <p>The result: measurable improvements in clarity, concentration, recall, processing speed — and a brain that continues to grow stronger as you age.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits-section">
+  <div class="benefits-header">
+    <div class="section-eyebrow" style="justify-content:center;">What You Gain</div>
+    <h2>Six Dimensions of <em>Cognitive Vitality</em></h2>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit-card"><div class="benefit-icon">🎯</div><div class="benefit-title">Sharper Focus</div><p>Reduce mental fog and scattered attention. Develop sustained concentration that carries you through demanding tasks and complex decisions.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">💭</div><div class="benefit-title">Memory Enhancement</div><p>Strengthen short and long-term recall through targeted neuroplasticity exercises that reinforce memory consolidation pathways.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">⚡</div><div class="benefit-title">Mental Speed</div><p>Improve cognitive processing speed — how quickly you take in information, connect ideas, and formulate clear responses under pressure.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">🧘</div><div class="benefit-title">Emotional Regulation</div><p>Build resilience to stress and emotional reactivity by strengthening the prefrontal cortex — the brain's executive control center.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">🌱</div><div class="benefit-title">Neuroprotection</div><p>Build cognitive reserve that protects against age-related decline and reduces risk factors associated with dementia and cognitive deterioration.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">✨</div><div class="benefit-title">Mental Clarity</div><p>Experience the sustained mental clarity that comes when your brain-body system is operating in coherent, optimized alignment.</p></div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs-section">
+  <div class="programs-header">
+    <div class="section-eyebrow">Our Programs</div>
+    <h2>Choose Your <em>Path</em></h2>
+  </div>
+  <div class="programs-cards">
+    <div class="prog-card">
+      <div class="prog-for">For Professionals & Executives</div>
+      <div class="prog-name">BrainVitality360™ Starter</div>
+      <p>Begin your cognitive longevity journey. A comprehensive assessment plus 3 personalized sessions to establish your baseline and initiate targeted neuroplasticity training. Includes a custom home practice plan.</p>
+      <ul style="margin:1.2rem 0;padding-left:0;list-style:none;display:grid;gap:0.5rem;">
+        <li style="font-size:0.85rem;color:rgba(250,247,242,0.6);display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--gold);">✦</span>Cognitive assessment + baseline</li>
+        <li style="font-size:0.85rem;color:rgba(250,247,242,0.6);display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--gold);">✦</span>3 × 60-min personalized sessions</li>
+        <li style="font-size:0.85rem;color:rgba(250,247,242,0.6);display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--gold);">✦</span>Custom home practice protocol</li>
+        <li style="font-size:0.85rem;color:rgba(250,247,242,0.6);display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--gold);">✦</span>Progress tracking</li>
+      </ul>
+      <div class="prog-price">$697</div>
+      <button class="prog-buy" onclick="openModal('BrainVitality360 Starter','$697','4-session program')">Enroll Now</button>
+    </div>
+    <div class="prog-card">
+      <div class="prog-for">For Seniors & Long-term Brain Health</div>
+      <div class="prog-name">BrainVitality360™ Longevity</div>
+      <p>The complete 12-week neuroplasticity program. Designed for individuals committed to long-term cognitive optimization and prevention. Combines in-depth assessment, progressive training, and concierge support with science-backed protocols.</p>
+      <ul style="margin:1.2rem 0;padding-left:0;list-style:none;display:grid;gap:0.5rem;">
+        <li style="font-size:0.85rem;color:rgba(250,247,242,0.6);display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--gold);">✦</span>Full cognitive & lifestyle assessment</li>
+        <li style="font-size:0.85rem;color:rgba(250,247,242,0.6);display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--gold);">✦</span>12 × 60-min personalized sessions</li>
+        <li style="font-size:0.85rem;color:rgba(250,247,242,0.6);display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--gold);">✦</span>Bi-weekly family/caregiver updates</li>
+        <li style="font-size:0.85rem;color:rgba(250,247,242,0.6);display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--gold);">✦</span>Nutrition & sleep optimization guide</li>
+        <li style="font-size:0.85rem;color:rgba(250,247,242,0.6);display:flex;align-items:center;gap:0.5rem;"><span style="color:var(--gold);">✦</span>Monthly progress reports</li>
+      </ul>
+      <div class="prog-price">$2,997</div>
+      <button class="prog-buy" onclick="openModal('BrainVitality360 Longevity','$2,997','12-week full program')">Enroll Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<div class="testimonial-strip">
+  <div class="testimonial-strip-inner">
+    <div class="testimonial-stars">★★★★★</div>
+    <p class="testimonial-quote">"At 67, I feel sharper than I did at 50. My memory has improved noticeably, I sleep better, and I feel like myself again — energized and clear. The science behind this program is extraordinary."</p>
+    <div class="testimonial-attr">— Robert K., Retired Executive, BrainVitality360 Graduate</div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="section-eyebrow" style="justify-content:center;color:rgba(26,20,16,0.6);">Start Today</div>
+  <h2>Your brain is <em style="color:var(--ink);">waiting to grow.</em></h2>
+  <p>The sooner you begin, the greater your cognitive reserve — and the more empowered, sharp, and energized your future becomes.</p>
+  <button class="btn-dark" onclick="openModal('BrainVitality360 Starter','$697','4-session program')">Begin Your Brain Journey</button>
+</div>
+
+<footer>
+  <div><div class="footer-logo">Artes<span>Humanis</span></div><div class="footer-copy">© ArtesHumanis 2026. All rights reserved.</div></div>
+  <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="mindbodypq.html">MINDBODYPQ</a></li><li><a href="xelle.html">Xelle</a></li><li><a href="retreats.html">Retreats</a></li><li><a href="contact.html">Contact</a></li></ul>
+</footer>
+
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent">
+      <h3 id="modalTitle"></h3><div class="modal-pkg-price" id="modalPrice"></div>
+      <div class="order-summary"><p><strong id="modalDesc"></strong></p><p style="margin-top:0.3rem;font-size:0.8rem">✦ Secure checkout &nbsp;✦ 14-day guarantee</p></div>
+      <div class="form-group"><label>Full Name</label><input type="text" id="checkoutName" placeholder="Jane Smith" /></div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="jane@example.com" /></div>
+      <div class="form-group"><label>Card Number</label><input type="text" placeholder="4242 4242 4242 4242" maxlength="19" oninput="formatCard(this)" /><div class="cc-icons"><span class="cc-icon">VISA</span><span class="cc-icon">MC</span><span class="cc-icon">AMEX</span></div></div>
+      <div class="form-row"><div class="form-group"><label>Expiry</label><input type="text" placeholder="MM / YY" maxlength="7" /></div><div class="form-group"><label>CVC</label><input type="text" placeholder="•••" maxlength="4" /></div></div>
+      <div class="secure-note">🔒 256-bit SSL encryption</div>
+      <button class="submit-btn" onclick="processPayment()">Complete Enrollment</button>
+    </div>
+    <div id="modalSuccess" style="display:none" class="modal-success">
+      <div class="check">✅</div><h3>You're Enrolled!</h3>
+      <p>Welcome to BrainVitality360™. Check your email for next steps.</p>
+      <p style="margin-top:1rem;font-weight:500" id="successName"></p>
+      <button class="btn-primary" style="margin-top:2rem" onclick="closeModal()">Continue</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(title,price,desc){document.getElementById('modalTitle').textContent=title;document.getElementById('modalPrice').textContent=price;document.getElementById('modalDesc').textContent=desc;document.getElementById('modalContent').style.display='block';document.getElementById('modalSuccess').style.display='none';document.getElementById('checkoutModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('checkoutModal').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('checkoutModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+function formatCard(input){let v=input.value.replace(/\D/g,'').substring(0,16);input.value=v.replace(/(.{4})/g,'$1 ').trim();}
+function processPayment(){const name=document.getElementById('checkoutName').value.trim();if(!name){alert('Please enter your name.');return;}document.getElementById('modalContent').style.display='none';document.getElementById('successName').textContent='Welcome, '+name+' 🌟';document.getElementById('modalSuccess').style.display='block';}
+window.addEventListener('scroll',()=>{const nav=document.querySelector('nav');nav.style.padding=window.scrollY>50?'0.8rem 4rem':'1.25rem 4rem';});
+</script>
+</body>
+</html>
